@@ -1,6 +1,5 @@
 package Logic;
 
-import java.awt.*;
 import java.util.Arrays;
 
 public class Coordinates {
@@ -20,7 +19,7 @@ public class Coordinates {
         return col;
     }
 
-    boolean areValid(){
+    public boolean areValid(){
         int[] x = new int[]{this.row,this.col};
         return (Arrays.stream(x).filter(z->z<15).filter(z->z>=0).count() == 2);
     }

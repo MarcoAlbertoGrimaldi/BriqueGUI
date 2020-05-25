@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Rules  {
 
-    Rules(){}
+    public Rules(){}
 
     public ArrayList<Coordinates> escort_rules(Board board, Coordinates c, State piece) {
         Cell cell = board.getCell(c);

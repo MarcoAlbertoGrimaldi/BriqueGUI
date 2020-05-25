@@ -1,0 +1,104 @@
+package Test;
+
+import Logic.*;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
+public class RulesTest {
+
+    @Test
+    public void Check_pieRule() {
+        Player p1 = new Player(PieceColor.BLACK, "p1");
+        Player p2 = new Player( PieceColor.WHITE, "p2");
+        Rules rules = new Rules();
+        Game game = new Game(p1,p2,true);
+        rules.apply_pie_rule(game);
+        assertEquals(p1.getControl(), PieceColor.WHITE);
+        assertEquals(p2.getControl(), PieceColor.BLACK);
+    }
+
+
+    @Test
+    public void check_get_escorts(){
+        Board board = new Board();
+        Rules rules = new Rules();
+        Coordinates white_c = new Coordinates(1,3);
+        ArrayList<Cell> white_escorts = rules.get_escorts(board,white_c);
+        check_coordinates(white_escorts,0,3,1,2);
+        Coordinates black_c = new Coordinates(1,4);
+        ArrayList<Cell> black_escorts = rules.get_escorts(board,black_c);
+        check_coordinates(black_escorts,2,4,1,5);
+    }
+
+    @Test
+    public void check_escort_rule() {
+        Coordinates c = new Coordinates(1, 3);
+        Check_esc(c, State.B_PIECE);
+        Coordinates d = new Coordinates(1, 2);
+        Check_esc(d, State.B_PIECE);
+    }
+
+
+    public void check_coordinates(ArrayList<Cell> escorts,int row_0,int col_0,int row_1,int col_1){
+        assertEquals(escorts.get(0).getCoordinates().getRow(),row_0);
+        assertEquals(escorts.get(0).getCoordinates().getCol(),col_0);
+        assertEquals(escorts.get(1).getCoordinates().getRow(),row_1);
+        assertEquals(escorts.get(1).getCoordinates().getCol(),col_1);
+
+
+    }
+
+    public void Check_esc(Coordinates c, State state) {
+        Board board = new Board();
+        board.getCell(c).setState(state);
+        Coordinates c2 = GetRightCoordinateToApplyEscortRule(c);
+        modify_board(board,c,c2,state);
+        ArrayList<State> StateToBeControlled = GetCoordinatesOfStateModifiedByEscortRule(c,board);
+        assertEquals(state, StateToBeControlled.get(0));
+        assertEquals(State.EMPTY, StateToBeControlled.get(1));
+    }
+
+
+    public void modify_board(Board board,Coordinates c ,Coordinates c2, State state){
+        Rules rules = new Rules();
+        board.getCell(c2).setState(state);
+        ArrayList<Coordinates> x = rules.escort_rules(board, c, state);
+    }
+
+
+    public Coordinates GetRightCoordinateToApplyEscortRule(Coordinates c){
+        if ((c.getCol()+c.getRow())%2==0){
+            Coordinates res = new Coordinates(c.getRow() + 1, c.getCol() - 1);
+            if(res.areValid()) return res;
+            else return null;
+        }
+        else {
+            Coordinates res = new Coordinates(c.getRow() - 1, c.getCol() + 1);
+            if(res.areValid()) return res;
+            else return null;
+        }
+    }
+
+    public ArrayList<State> GetCoordinatesOfStateModifiedByEscortRule(Coordinates c,Board board){
+        if((c.getCol()+c.getRow())%2==0){
+            ArrayList<State> res = new ArrayList<State>();
+            res.add(board.getCell(new Coordinates(c.getRow(), c.getCol() - 1)).getState());
+            res.add(board.getCell(new Coordinates(c.getRow() - 1, c.getCol())).getState());
+            return res;
+        }
+        else{
+            ArrayList<State> res = new ArrayList<State>();
+            res.add(board.getCell(new Coordinates(c.getRow(), c.getCol() + 1)).getState());
+            res.add(board.getCell(new Coordinates(c.getRow() + 1, c.getCol())).getState());
+            return res;
+        }
+    }
+
+
+
+
+}
