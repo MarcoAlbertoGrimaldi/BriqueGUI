@@ -4,13 +4,13 @@ import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class Graph {
+public class Graph {
 
     private final PieceColor pieceColor;
     private  final int num_vertices = 227;
     private final ArrayList<LinkedList<Integer>> adjacencyList;
 
-    Graph(PieceColor col) {
+    public Graph(PieceColor col) {
         pieceColor = col;
         adjacencyList = new ArrayList<>();
         for (int i = 0; i < num_vertices; ++i)
@@ -74,7 +74,7 @@ class Graph {
         return false;
     }
 
-    void update_graph(Coordinates coordinates, Board board){
+    public void update_graph(Coordinates coordinates, Board board){
         ArrayList<Coordinates> neighbours = find_neighbours(coordinates, this.pieceColor, board);
         for(Coordinates x: neighbours){
             addEdge(coordinates,x);

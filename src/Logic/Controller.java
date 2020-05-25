@@ -2,7 +2,7 @@ package Logic;
 
  public class Controller {
 
-    Controller() {
+    public Controller() {
     }
 
     public void switchPlayer(Game game) {
