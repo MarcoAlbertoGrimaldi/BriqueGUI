@@ -1,14 +1,14 @@
 package Logic;
-import java.util.*;
-
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class Graph {
 
     private final PieceColor pieceColor;
     private  final int num_vertices = 227;
-    private final ArrayList<LinkedList<Integer>> adjacencyList;
+    public final ArrayList<LinkedList<Integer>> adjacencyList;
 
     public Graph(PieceColor col) {
         pieceColor = col;
@@ -18,7 +18,7 @@ public class Graph {
         addBorders(this.pieceColor);
     }
 
-    void addEdge(Coordinates v, Coordinates w) {
+    public void addEdge(Coordinates v, Coordinates w) {
         adjacencyList.get(v.getRow() * 15 + v.getCol()).add(w.getRow() * 15 + w.getCol());
         adjacencyList.get(w.getRow() * 15 + w.getCol()).add(v.getRow() * 15 + v.getCol());
     }
@@ -38,7 +38,7 @@ public class Graph {
         }
     }
 
-    void rmvEdge(Coordinates v, Coordinates w) {
+    public void rmvEdge(Coordinates v, Coordinates w) {
         adjacencyList.get(v.getRow() * 15 + v.getCol()).remove(adjacencyList.get(v.getRow() * 15 + v.getCol()).indexOf(w.getRow() * 15 + w.getCol()));
         adjacencyList.get(w.getRow() * 15 + w.getCol()).remove(adjacencyList.get(w.getRow() * 15 + w.getCol()).indexOf(v.getRow() * 15 + v.getCol()));
     }
@@ -90,7 +90,7 @@ public class Graph {
         }
     }
 
-    ArrayList<Coordinates> find_neighbours(Coordinates coordinates, PieceColor pieceColor, Board board) {
+    public ArrayList<Coordinates> find_neighbours(Coordinates coordinates, PieceColor pieceColor, Board board) {
 
         State state = pieceColor.toState();
 
