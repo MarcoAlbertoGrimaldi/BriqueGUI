@@ -1,11 +1,11 @@
 package Logic;
 
-class Cell {
+public class Cell {
     private final Coordinates coordinates;
     private PieceColor pieceColor;
     private State state = State.EMPTY;
 
-    Cell(int i, int j) {
+    public Cell(int i, int j) {
         coordinates = new Coordinates(i, j);
         setColour(i, j);
     }
