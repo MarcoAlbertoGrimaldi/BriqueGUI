@@ -81,7 +81,7 @@ public class Graph {
         }
     }
 
-    void restore_graph(Coordinates coordinates, Board board){
+    public void restore_graph(Coordinates coordinates, Board board){
         ArrayList<Coordinates> opponents = find_opponents(coordinates, this.pieceColor, board);
         for(Coordinates x: opponents){
             if (pathFound(coordsToInt(coordinates), coordsToInt(x))){

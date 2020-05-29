@@ -1,6 +1,10 @@
 package Logic;
 
- public class Controller {
+import CLI.Game_cli;
+
+public class Controller {
+
+
 
     public Controller() {
     }
@@ -14,6 +18,18 @@ package Logic;
             game.getPlayer_2().setCurrent(false);
         }
     }
+
+
+     public void switchPlayer(Game_cli game) {
+
+         if (game.getPlayer_1().isCurrent()) {
+             game.getPlayer_1().setCurrent(false);
+             game.getPlayer_2().setCurrent(true);
+         } else {
+             game.getPlayer_1().setCurrent(true);
+             game.getPlayer_2().setCurrent(false);
+         }
+     }
 
      public void swapGraphs(Player p1, Player p2) {
          Graph temp = p1.getGraph();
@@ -37,4 +53,15 @@ package Logic;
      }
 
 
- }
+    public void apply_pie_rule(Game_cli game, Rules rules, boolean pie_bool) {
+
+        if (pie_bool) {
+            rules.Pie_rule_cli(game.getPlayer_1(), game.getPlayer_2());
+            swapGraphs(game.getPlayer_1(), game.getPlayer_2());
+        } else {
+            switchPlayer(game);
+        }
+    }
+
+
+}

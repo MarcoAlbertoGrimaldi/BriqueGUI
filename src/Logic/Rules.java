@@ -53,6 +53,13 @@ public class Rules  {
         game.controller.swapControl(game.getPlayer_1(), game.getPlayer_2());
         game.controller.swapGraphs(game.getPlayer_1(), game.getPlayer_2());
     }
+
+
+    public void Pie_rule_cli(Player p1, Player p2) {
+        PieceColor temp = p1.getControl();
+        p1.setControl(p2.getControl());
+        p2.setControl(temp);
+    }
 }
 
 
