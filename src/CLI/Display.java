@@ -9,7 +9,7 @@ public class Display {
         System.out.println();
     }
 
-    void printBoard(Board board) {
+    public void printBoard(Board board) {
         System.out.print("   ");
         for (int i = 0; i < Board.dim; i = i + 1) {
             System.out.print(" " + (char) (i + 'a'));
