@@ -19,6 +19,9 @@ public class Game {
         controller = new Controller();
     }
 
+
+
+
     public Player getPlayer_1() {
         return player_1;
     }
@@ -47,3 +50,6 @@ public class Game {
         this.move_counter++;
     }
 }
+
+
+

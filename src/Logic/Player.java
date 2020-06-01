@@ -7,8 +7,9 @@ public class Player {
     private String name = "AI";
     private Graph graph;
     private boolean current = false;
+    private boolean resigned = false;
 
-    boolean isCurrent() {
+    public boolean isCurrent() {
         return current;
     }
 
@@ -46,8 +47,15 @@ public class Player {
         this.control = control;
     }
 
-    void setCurrent(boolean bool) {
+    public void setCurrent(boolean bool) {
         this.current = bool;
     }
 
+
+    // add resigned
+    public void setResigned() {
+        this.resigned = true;
+    }
+
+    public boolean isResigned() { return resigned; }
 }
