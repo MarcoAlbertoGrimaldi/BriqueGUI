@@ -1,4 +1,4 @@
-package Test;
+/*package Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,3 +22,4 @@ class SettingsTest {
     void toDimension() {
     }
 }
+*/
