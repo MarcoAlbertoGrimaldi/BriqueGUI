@@ -18,7 +18,7 @@ public class VictoryFrame {
         victory.setResizable(false);
         victory.setAlwaysOnTop(true);
 
-        exitButton = new JButton(name + " Win!");
+        exitButton = new JButton(name + " Wins!");
         exitButton.setFont(new Font("Arial", Font.BOLD, 32));
         victory.add(exitButton);
 

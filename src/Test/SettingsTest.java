@@ -1,4 +1,4 @@
-package Test;
+/*package Test;
 
 import Logic.Settings;
 import org.junit.Assert;
@@ -25,3 +25,4 @@ class SettingsTest {
         assertEquals(new Dimension(720, 720), Settings.toDimension("720x720"));
     }
 }
+*/

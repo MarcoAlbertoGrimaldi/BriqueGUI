@@ -48,7 +48,7 @@ public class IO_Interface {
         int r, c;
         boolean valid = false;
         Coordinates coordinates = new Coordinates(-1,-1);
-        System.out.println("Insert coordinates or type res for resign:");
+        System.out.println("Insert coordinates or type 'res' to resign:");
 
         while(!valid) {
             String input = scanner.next();
@@ -71,8 +71,8 @@ public class IO_Interface {
     }
 
     boolean getPieRule(Player current_player) {
-        System.out.println(current_player.getName() + "'s has to choose if apply the pie rule or not.");
-        System.out.println("If you want to apply pie rule, digit 1, otherwise digit 0");
+        System.out.println(current_player.getName() + " has to choose whether to apply the pie rule or not.");
+        System.out.println("If you want to apply the pie rule, type 1, otherwise type 0");
         boolean status = false;
         boolean valid = false;
         while(!valid){
