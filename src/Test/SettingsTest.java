@@ -1,24 +1,27 @@
 package Test;
 
+import Logic.Settings;
+import org.junit.Assert;
+
+import java.awt.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SettingsTest {
 
-
-
     @org.junit.jupiter.api.Test
     void getResolution() {
+        assertEquals(Settings.getResolution(), new Dimension(720, 720));
     }
 
     @org.junit.jupiter.api.Test
     void setResolution() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void getDimensions() {
+        Settings.setResolution(0);
+        assertEquals(Settings.getResolution(), new Dimension(480, 480));
     }
 
     @org.junit.jupiter.api.Test
     void toDimension() {
+        assertEquals(new Dimension(720, 720), Settings.toDimension("720x720"));
     }
 }
