@@ -41,13 +41,11 @@ public class Game_cli {
             }
             display.printMove(this);
             display.printBoard(board);
-
             if(move_counter==1){
                 controller.switchPlayer(this);
                 boolean pie_bool = io_interface.getPieRule(getCurrent_player());
                 controller.apply_pie_rule(this,this.rules,pie_bool);
             }
-
             if(move_counter >= 28){
                 victory.set(controller.check_victory(getCurrent_player().getGraph()));
             }

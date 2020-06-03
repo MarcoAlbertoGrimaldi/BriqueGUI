@@ -1,9 +1,7 @@
 package CLI;
 
 import Logic.AI_Logic;
-import Logic.Board;
 import Logic.Coordinates;
-import Logic.State;
 
 import java.util.ArrayList;
 
@@ -29,8 +27,8 @@ public class Turn_cli {
             coordinates = AI_Logic.chooseRandomCoordinates(game.getBoard());
         }
 
-        makeMove(game.getBoard(), coordinates, game.getCurrent_player().getControl().toState());
 
+        game.getBoard().getCell(coordinates).setState(game.getCurrent_player().getControl().toState());
         ArrayList<Coordinates> escorts = game.rules.escort_rules(game.getBoard(), coordinates, game.getCurrent_player().getControl().toState());
 
         game.getCurrent_player().getGraph().update_graph(coordinates, game.getBoard());
@@ -42,8 +40,8 @@ public class Turn_cli {
 
     }
 
-    public void makeMove(Board board, Coordinates coordinates, State piece_colour) {
-        board.getCell(coordinates).setState(piece_colour);
-    }
+
+
+
 
 }
