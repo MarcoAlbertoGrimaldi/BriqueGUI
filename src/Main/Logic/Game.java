@@ -7,19 +7,13 @@ public class Game {
     boolean isMultiplayer;
     public Board board;
     int move_counter = 0;
-    public Rules rules;
-    public Controller controller;
 
     public Game(Player player_1, Player player_2, boolean isMultiplayer){
         this.player_1 = player_1;
         this.player_2 = player_2;
         this.isMultiplayer = isMultiplayer;
-        this.rules = new Rules();
         board = new Board();
-        controller = new Controller();
     }
-
-
 
 
     public Player getPlayer_1() {

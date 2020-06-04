@@ -5,8 +5,7 @@ import Logic.Launch_Game;
 public class Brique {
 
     public static void main(String[] args) {
-        IO_Interface io_interface = new IO_Interface();
-        String inter_string = io_interface.ChooseInterface();
+        String inter_string = IO_Interface.ChooseInterface();
         if (inter_string.equals("GUI")) {
             Launch_Game game = new Launch_Game();
             game.launch();

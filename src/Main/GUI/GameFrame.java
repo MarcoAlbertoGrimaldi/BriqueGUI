@@ -110,7 +110,7 @@ public class GameFrame extends JFrame implements MouseListener {
             CellPanels.get(coordinate.getRow() * 15 + coordinate.getCol()).repaint();
         }
         if (isMultiplayer && game.getMove_counter()==1) new PieRuleFrame(board, game,this);
-        game.controller.switchPlayer(this.game);
+        Controller.switchPlayer(this.game);
 
         System.out.println("move made.. now:");
         System.out.println(game.player_1.getName() + "control " + game.player_1.getControl());
@@ -122,12 +122,12 @@ public class GameFrame extends JFrame implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         Coordinates coordinates = new Coordinates((mouseEvent.getY()-30)/(Settings.getResolution().height/15), (mouseEvent.getX()-7)/(Settings.getResolution().width/15));
-        if(game.controller.areEmpty(game.getBoard(), coordinates)) {
+        if(Controller.areEmpty(game.getBoard(), coordinates)) {
             boardCellClick(new Coordinates((mouseEvent.getY()-30)/(Settings.getResolution().height/15), (mouseEvent.getX()-7)/(Settings.getResolution().width/15)));
-            if(!isMultiplayer && !game.controller.check_victory(game.getOther_player().getGraph())) {
+            if(!isMultiplayer && !Controller.check_victory(game.getOther_player().getGraph())) {
                 boardCellClick(AI_Logic.chooseRandomCoordinates(game.getBoard()));
             }
-            if(game.controller.check_victory(game.getOther_player().getGraph())){
+            if(Controller.check_victory(game.getOther_player().getGraph())){
                 new VictoryFrame(game.getOther_player().getName(), board);
                 board.setEnabled(false);
             }

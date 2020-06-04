@@ -25,8 +25,7 @@ public class TurnTest {
         Player player1 = new Player(PieceColor.BLACK, "Human");
         Player player2 = new Player(PieceColor.WHITE, "Human_2");
 
-        Game game = new Game(player1,player2, true);
-        return game;
+        return new Game(player1,player2, true);
 
     }
 }

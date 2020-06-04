@@ -15,7 +15,7 @@ public class Turn {
 
     public ArrayList<Coordinates> playTurn(){
         game.board.getCell(coordinates).setState(game.getCurrent_player().getControl().toState());
-        ArrayList<Coordinates> escorts = game.rules.escort_rules(game.getBoard(), coordinates, game.getCurrent_player().getControl().toState());
+        ArrayList<Coordinates> escorts = Rules.escort_rules(game.getBoard(), coordinates, game.getCurrent_player().getControl().toState());
         game.getCurrent_player().getGraph().update_graph(coordinates, game.getBoard());
 
         for(Coordinates escort : escorts) {

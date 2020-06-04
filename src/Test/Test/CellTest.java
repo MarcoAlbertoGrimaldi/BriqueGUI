@@ -31,7 +31,7 @@ public class CellTest {
 
 
 
-    private void check_state(Cell cell, State state){Assertions.assertEquals(state, cell.getState()); }
+    private void check_state(Cell cell, Enum<State> state){Assertions.assertEquals(state, cell.getState()); }
 
 
     private void check_col() {

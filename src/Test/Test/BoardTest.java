@@ -1,6 +1,5 @@
 package Test;
 
-
 import Logic.Board;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,6 @@ public class BoardTest {
     }
 
     private void check_dim() {
-        Board board = new Board();
-        Assertions.assertEquals(15, board.dim);
+        Assertions.assertEquals(15, Board.dim);
     }
 }

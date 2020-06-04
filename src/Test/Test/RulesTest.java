@@ -14,9 +14,8 @@ public class RulesTest {
     public void Check_pieRule() {
         Player p1 = new Player(PieceColor.BLACK, "p1");
         Player p2 = new Player( PieceColor.WHITE, "p2");
-        Rules rules = new Rules();
         Game game = new Game(p1,p2,true);
-        rules.apply_pie_rule(game);
+        Rules.apply_pie_rule(game);
         assertEquals(p1.getControl(), PieceColor.WHITE);
         assertEquals(p2.getControl(), PieceColor.BLACK);
     }
@@ -24,13 +23,11 @@ public class RulesTest {
 
     @Test
     public void check_get_escorts(){
-        Board board = new Board();
-        Rules rules = new Rules();
         Coordinates white_c = new Coordinates(1,3);
-        ArrayList<Cell> white_escorts = rules.get_escorts(board,white_c);
+        ArrayList<Cell> white_escorts = Rules.get_escorts(new Board() ,white_c);
         check_coordinates(white_escorts,0,3,1,2);
         Coordinates black_c = new Coordinates(1,4);
-        ArrayList<Cell> black_escorts = rules.get_escorts(board,black_c);
+        ArrayList<Cell> black_escorts = Rules.get_escorts(new Board(), black_c);
         check_coordinates(black_escorts,2,4,1,5);
     }
 
@@ -57,16 +54,15 @@ public class RulesTest {
         board.getCell(c).setState(state);
         Coordinates c2 = GetRightCoordinateToApplyEscortRule(c);
         modify_board(board,c,c2,state);
-        ArrayList<State> StateToBeControlled = GetCoordinatesOfStateModifiedByEscortRule(c,board);
+        ArrayList<Enum<State>> StateToBeControlled = GetCoordinatesOfStateModifiedByEscortRule(c,board);
         assertEquals(state, StateToBeControlled.get(0));
         assertEquals(State.EMPTY, StateToBeControlled.get(1));
     }
 
 
     public void modify_board(Board board,Coordinates c ,Coordinates c2, State state){
-        Rules rules = new Rules();
         board.getCell(c2).setState(state);
-        ArrayList<Coordinates> x = rules.escort_rules(board, c, state);
+        ArrayList<Coordinates> x = Rules.escort_rules(board, c, state);
     }
 
 
@@ -83,19 +79,17 @@ public class RulesTest {
         }
     }
 
-    public ArrayList<State> GetCoordinatesOfStateModifiedByEscortRule(Coordinates c,Board board){
+    public ArrayList<Enum<State>> GetCoordinatesOfStateModifiedByEscortRule(Coordinates c, Board board){
+        ArrayList<Enum<State>> res = new ArrayList<>();
         if((c.getCol()+c.getRow())%2==0){
-            ArrayList<State> res = new ArrayList<State>();
             res.add(board.getCell(new Coordinates(c.getRow(), c.getCol() - 1)).getState());
             res.add(board.getCell(new Coordinates(c.getRow() - 1, c.getCol())).getState());
-            return res;
         }
         else{
-            ArrayList<State> res = new ArrayList<State>();
             res.add(board.getCell(new Coordinates(c.getRow(), c.getCol() + 1)).getState());
             res.add(board.getCell(new Coordinates(c.getRow() + 1, c.getCol())).getState());
-            return res;
         }
+        return res;
     }
 
 

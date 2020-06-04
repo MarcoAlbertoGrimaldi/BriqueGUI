@@ -10,30 +10,28 @@ public class Launch_Game_cli {
     public Launch_Game_cli(){}
 
     public void launch(){
-        IO_Interface io_interface = new IO_Interface();
         Player player1, player2;
-        Display display = new Display();
         Menu menu = new Menu();
         AtomicBoolean exit = new AtomicBoolean(false);
         while (!exit.get()){
-            display.printMenu(menu);
-            int s = io_interface.getMenuChoice();
+            Display.printMenu(menu);
+            int s = IO_Interface.getMenuChoice();
 
             switch(s) {
                 case 0:
-                    player1 = new Player(PieceColor.BLACK, io_interface.getName(PieceColor.BLACK));
+                    player1 = new Player(PieceColor.BLACK, IO_Interface.getName(PieceColor.BLACK));
                     System.out.println();
-                    player2 = new Player(PieceColor.WHITE, io_interface.getName(PieceColor.WHITE));
+                    player2 = new Player(PieceColor.WHITE, IO_Interface.getName(PieceColor.WHITE));
                     System.out.println();
-                    Game_cli gameHum = new Game_cli(player1,player2, display, io_interface);
+                    Game_cli gameHum = new Game_cli(player1,player2);
                     gameHum.playGame();
                     break;
                 case 1:
                     player1 = new Player(PieceColor.BLACK);
                     System.out.println();
-                    player2 = new Player(PieceColor.WHITE, io_interface.getName(PieceColor.WHITE));
+                    player2 = new Player(PieceColor.WHITE, IO_Interface.getName(PieceColor.WHITE));
                     System.out.println();
-                    Game_cli gameAI = new Game_cli(player1,player2, display, io_interface);
+                    Game_cli gameAI = new Game_cli(player1,player2);
                     gameAI.playGame();
                     break;
                 case 2:

@@ -1,7 +1,9 @@
 package GUI;
 
 import Logic.AI_Logic;
+import Logic.Controller;
 import Logic.Game;
+import Logic.Rules;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,9 +27,9 @@ public class PieRuleFrame {
         pieRule.add(yes);
 
         yes.addActionListener(actionEvent -> {
-            game.rules.apply_pie_rule(game);
+            Rules.apply_pie_rule(game);
             game.pieRule = true;
-            game.controller.switchPlayer(game);
+            Controller.switchPlayer(game);
 
             if(!gameFrame.isMultiplayer) gameFrame.boardCellClick(AI_Logic.chooseRandomCoordinates(game.getBoard()));
             gameFrame.setEnabled(true);

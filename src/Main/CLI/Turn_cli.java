@@ -1,7 +1,9 @@
 package CLI;
 
 import Logic.AI_Logic;
+import Logic.Controller;
 import Logic.Coordinates;
+import Logic.Rules;
 
 import java.util.ArrayList;
 
@@ -19,9 +21,9 @@ public class Turn_cli {
         if(game.getCurrent_player().isHuman()) {
             boolean valid_move = false;
             while (!valid_move) {
-                coordinates = game.io_interface.getCoordinates(game.getCurrent_player());
+                coordinates = IO_Interface.getCoordinates(game.getCurrent_player());
                 if(game.getCurrent_player().isResigned()) return;
-                valid_move = game.controller.areEmpty(game.getBoard(), coordinates);
+                valid_move = Controller.areEmpty(game.getBoard(), coordinates);
             }
         } else {
             coordinates = AI_Logic.chooseRandomCoordinates(game.getBoard());
@@ -29,7 +31,7 @@ public class Turn_cli {
 
 
         game.getBoard().getCell(coordinates).setState(game.getCurrent_player().getControl().toState());
-        ArrayList<Coordinates> escorts = game.rules.escort_rules(game.getBoard(), coordinates, game.getCurrent_player().getControl().toState());
+        ArrayList<Coordinates> escorts = Rules.escort_rules(game.getBoard(), coordinates, game.getCurrent_player().getControl().toState());
 
         game.getCurrent_player().getGraph().update_graph(coordinates, game.getBoard());
 

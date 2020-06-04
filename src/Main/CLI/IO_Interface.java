@@ -10,14 +10,9 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class IO_Interface {
 
-    private final Scanner scanner;
+    private static final Scanner scanner = new Scanner(System.in);
 
-    public IO_Interface() {
-        scanner = new Scanner(System.in);
-    }
-
-
-    public String ChooseInterface(){
+    public static String ChooseInterface(){
         String res = "";
         System.out.println("Welcome to Brique!");
         boolean valid = false;
@@ -38,12 +33,12 @@ public class IO_Interface {
         return res;
     }
 
-    public String getName(PieceColor control) {
+    static String getName(PieceColor control) {
         System.out.println("Enter name for " + control.toString() + " player:");
         return scanner.next();
     }
 
-    Coordinates getCoordinates(Player player) {
+    static Coordinates getCoordinates(Player player) {
         System.out.println(player.getName() + "'s move.");
         int r, c;
         boolean valid = false;
@@ -70,7 +65,7 @@ public class IO_Interface {
         return coordinates;
     }
 
-    boolean getPieRule(Player current_player) {
+    static boolean getPieRule(Player current_player) {
         System.out.println(current_player.getName() + " has to choose whether to apply the pie rule or not.");
         System.out.println("If you want to apply the pie rule, type '1'; otherwise type '0'.");
         boolean status = false;
@@ -91,7 +86,7 @@ public class IO_Interface {
         return status;
     }
 
-    public int getMenuChoice(){
+    static int getMenuChoice(){
         AtomicBoolean valid = new AtomicBoolean(false);
         AtomicReference<String> input;
         input = new AtomicReference<>("2");

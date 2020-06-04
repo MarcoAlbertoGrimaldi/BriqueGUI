@@ -4,12 +4,12 @@ import Logic.*;
 
 public class Display {
 
-    void printMove(Game_cli game){
+    static void printMove(Game_cli game){
         System.out.print("Move #" + game.getMove_counter() + " (" + game.getCurrent_player().getName() + "-" + game.getCurrent_player().getControl() + ")");
         System.out.println();
     }
 
-    public void printBoard(Board board) {
+    public static void printBoard(Board board) {
         System.out.print("   ");
         for (int i = 0; i < Board.dim; i = i + 1) {
             System.out.print(" " + (char) (i + 'a'));
@@ -41,15 +41,15 @@ public class Display {
         System.out.println("-------------------------------------------------------------");
     }
 
-    public void printMenu(Menu menu) {
+    static void printMenu(Menu menu) {
         System.out.println(menu.getMenuOptions());
     }
 
-    public void printResignedMessage(Game_cli game){
+    static void printResignedMessage(Game_cli game){
         System.out.println(game.getCurrent_player().getName() + " resigned!");
     }
 
-    public void printVictoryMessage(Game_cli game){
+    static void printVictoryMessage(Game_cli game){
         System.out.println(game.getCurrent_player().getName() + " WINS!");
     }
 

@@ -23,34 +23,30 @@ public class ControllerTest {
 
 
         }
-        Controller controller = new Controller();
-        assertTrue(controller.check_victory(white_graph));
-        assertTrue(controller.check_victory(black_graph));
+        assertTrue(Controller.check_victory(white_graph));
+        assertTrue(Controller.check_victory(black_graph));
     }
 
     @Test
     public void check_switchPlayer(){
         Game game = set_initial_game();
-        Controller controller = new Controller();
-        controller.switchPlayer(game);
+        Controller.switchPlayer(game);
         assertEquals(game.getCurrent_player(),game.getPlayer_2());
     }
 
     @Test
     public void check_areEmpty(){
-        Controller controller = new Controller();
         Board board = new Board();
         Coordinates coordinates = new Coordinates(1, 2);
-        assertTrue(controller.areEmpty(board,coordinates));
+        assertTrue(Controller.areEmpty(board,coordinates));
     }
 
     @Test
     public void check_swapGraphs(){
         Player player1 = new Player(PieceColor.BLACK, "Human");
         Player player2 = new Player(PieceColor.WHITE, "Human_2");
-        Controller controller = new Controller();
         Graph player1_graph = player1.getGraph();
-        controller.swapGraphs(player1,player2);
+        Controller.swapGraphs(player1,player2);
         assertEquals(player1_graph,player2.getGraph());
     }
 
