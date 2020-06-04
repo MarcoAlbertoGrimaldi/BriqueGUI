@@ -3,11 +3,10 @@
 This repository contains the *Software Development Methods* final project by Marco Alberto Grimaldi, Valeria Paolucci, Alberto Presta.
 
 ## Project structure
-- Logic: Package containing all the logic of the game,from the board to 
-         rules of the game.
-- CLI: Package that manages the game flow and the interface from the command line.
-- GUI: Package that maneges the game flow and the interface from the GUI.
-- Test: packages that contains all the tests.
+- Logic: Package containing all the logic of the game, from the board to the rules of the game.
+- CLI: Package that manages the game flow and the interface from Command Line.
+- GUI: Package that manages the game flow and the interface from the GUI.
+- Test: Package containing all the tests.
 
 ## Rules
 *Brique* is a simple two-player board game. Rules can be found [here](https://github.com/MarcoAlbertoGrimaldi/BriqueGUI/edit/master/Rules.pdf).

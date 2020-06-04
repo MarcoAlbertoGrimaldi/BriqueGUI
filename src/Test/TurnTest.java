@@ -3,8 +3,6 @@ package Test;
 import Logic.*;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TurnTest {
@@ -13,12 +11,10 @@ public class TurnTest {
     @Test
     public void check_playTurn(){
         Game game =  set_initial_game();
-        Coordinates coordinates = new Coordinates(1,2);
-        Turn turn = new Turn(game,coordinates);
-
-        ArrayList<Coordinates> c = turn.playTurn();
+        Coordinates coordinates = new Coordinates(1, 2);
+        Turn turn = new Turn(game, coordinates);
+        turn.playTurn();
         assertEquals(game.getBoard().getCell(coordinates).getState(), State.B_PIECE);
-        // i grafi e il resto non serve controllarli, perché già gli altri test lo fanno...però chiedo agli altri per sicure<zza
 
     }
 
